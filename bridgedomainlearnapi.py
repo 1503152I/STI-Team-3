@@ -13,7 +13,7 @@ tasks = output
 def READ():
 
         #Updating JSON File & Flask Item Table
-        updatejson = "python this.py"
+        updatejson = "python showbridgedomain.py"
         subprocess.call(updatejson, shell=True)
         updatedchild = subprocess.Popen('cat showbridge.json', stdout=subprocess.PIPE,shell=True)
         updatedoutput = updatedchild.communicate()[0]
@@ -34,7 +34,7 @@ def UPDATElearn():
         subprocess.call(update,stdout=subprocess.PIPE, shell=True)
 
         #Updating JSON File & Flask Item Table  
-        updatejson = "python this.py"
+        updatejson = "python showbridgedomain.py"
         subprocess.call(updatejson, shell=True)
         updatedchild = subprocess.Popen('cat showbridge.json', stdout=subprocess.PIPE,shell=True)
         updatedoutput = updatedchild.communicate()[0]
