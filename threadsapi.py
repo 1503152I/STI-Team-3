@@ -4,7 +4,7 @@ import subprocess
 
 app = Flask(__name__)
 
-child = subprocess.Popen('cat showthreads.json',stdout=subprocess.PIPE,shell=True)
+child = subprocess.Popen('cat showhardware.json',stdout=subprocess.PIPE,shell=True)
 output = child.communicate()[0]
 
 tasks = output
@@ -13,9 +13,9 @@ tasks = output
 def READ2():
 
         #Updating JSON File & Flask Item Table
-        updatejson = "python this2.py"
+        updatejson = "python showhardware.py"
         subprocess.call(updatejson, shell=True)
-        updatedchild = subprocess.Popen('cat showthreads.json', stdout=subprocess.PIPE,shell=True)
+        updatedchild = subprocess.Popen('cat showhardware.json', stdout=subprocess.PIPE,shell=True)
         updatedoutput = updatedchild.communicate()[0]
         tasks = updatedoutput
 
