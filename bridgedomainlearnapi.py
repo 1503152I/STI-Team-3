@@ -12,8 +12,8 @@ def get_password(username):
         return 'python'
     return None
 
-@auth.error_handler(403)
-def unauthorized(error):
+@auth.error_handler
+def unauthorized():
     return make_response(jsonify({'error': 'Unauthorized access'}), 403)
 
 @app.errorhandler(404)
@@ -30,7 +30,7 @@ output = child.communicate()[0]
 tasks = output
 
 @app.route('/vpp/tasks', methods=['GET'])
-@app.login_required
+@auth.login_required
 def READ():
 
         #Updating JSON File & Flask Item Table
@@ -43,7 +43,7 @@ def READ():
         return tasks
 
 @app.route('/vpp/tasks', methods=['PUT'])
-@app.login_required
+@auth.login_required
 def UPDATElearn():
 
         if not request.json or not 'Learning' in request.json:
