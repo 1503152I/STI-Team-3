@@ -41,7 +41,7 @@ def get_showbuffer():
 
         return tasks1
 
-#@app.route('/todo/updatebridge', methods=['UPDATE'])
+#@app.route('/todo/updatebridge', methods=['PUT'])
 #@auth.login_required
 #def update_bridge_forward():
 #
@@ -89,12 +89,9 @@ def delete_dhcpclient():
 
         if not request.json or not 'Interface' in request.json:
                 abort(400)
-        if not request.json or not 'Delete' in request.json:
-                abort(400)
 
         DHCPINT = str(request.json['Interface'])
-        DELETEINT = str(request.json['Delete'])
-        addintf = 'sudo vppctl set dhcp client %s intfc %s' % (DELETEINT, DHCPINT)
+        addintf = 'sudo vppctl set dhcp client del intfc %s' % (DHCPINT)
         subprocess.call(addintf,stdout=subprocess.PIPE, shell = True)
 
         childsp = subprocess.Popen('sudo vppctl show dhcp client', stdout=subprocess.PIPE, shell = True)
@@ -175,7 +172,7 @@ def delete_host():
 
         return tasks2
 
-@app.route('/todo/updateinterface', methods=['UPDATE'])
+@app.route('/todo/updateinterface', methods=['PUT'])
 @auth.login_required
 def update_interface_state():
 
